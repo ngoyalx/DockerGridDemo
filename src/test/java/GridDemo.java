@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,12 @@ public class GridDemo {
 
     WebDriver driver = null;
 
+
+    @BeforeTest
+    public void setup(){
+
+    }
+
     @Test
     @Parameters({"browser","platform","isRemoteExecution"})
     public void openGoogle(String browser,String platform,boolean isRemoteExecution) throws MalformedURLException{
@@ -23,6 +30,7 @@ public class GridDemo {
         driver.manage().window().maximize();
         driver.get("https://www.google.com");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.out.print("Browser has been openend");
     }
 
     @AfterTest
